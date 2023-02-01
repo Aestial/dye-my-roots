@@ -14,6 +14,7 @@ func submit(color):
 
 func _on_LineEdit_text_changed(new_text):
 	var color = Color(new_text)
+	assert(color, "Invalid color code")
 	preview(color)
 
 func _on_LineEdit_text_entered(new_text):

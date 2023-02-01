@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "AudioStreamPlayer",
+"class": "ACVoiceBox",
+"language": "GDScript",
+"path": "res://addons/ACVoicebox/ACVoicebox.gd"
+} ]
+_global_script_class_icons={
+"ACVoiceBox": ""
+}
+
 [application]
 
 config/name="Dye my Roots"

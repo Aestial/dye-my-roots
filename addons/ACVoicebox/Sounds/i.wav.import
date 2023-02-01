@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/i.wav-2b58f5953ec5f194556695e52523ac7d.sample"
+
+[deps]
+
+source_file="res://addons/ACVoicebox/Sounds/i.wav"
+dest_files=[ "res://.import/i.wav-2b58f5953ec5f194556695e52523ac7d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

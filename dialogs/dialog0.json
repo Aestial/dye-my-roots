@@ -1,0 +1,27 @@
+[
+  {
+	"Name": "Miss Kelly",
+	"Pitch": 2,
+	"Text": "[rainbow freq=0.15 sat=.3 val=1]Hello!![/rainbow]"
+  },
+  {
+	"Name": "Miss Kelly",
+	"Pitch": 2,
+	"Text": "Welcome to the emporium of [rainbow freq=0.25 sat=.5 val=1.2]dying!!!!![/rainbow]"
+  },
+  {
+	"Name": "Miss Kelly",
+	"Pitch": 2,
+	"Text": "Today we are going to get rid of some [wave amp=40 freq=4][fade start=0 length=12][b]roots...[/b][/fade][/wave]"
+  },
+  {
+	"Name": "Miss Kelly",
+	"Pitch": 2,
+	"Text": "Hey! Yo talking [shake rate=5 level=10][color=#e2b3d5]nonsense!![/color][/shake]"
+  },
+  {
+    "Name": "Miss Kelly",
+    "Pitch": 2,
+    "Text": "[center]Yo talking [shake rate=5 level=10][color=#e2b3d5]nonsense!![/color][/shake][/center]"
+  }
+]

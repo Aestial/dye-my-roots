@@ -1,18 +1,20 @@
 extends Control
 
 export var dialog_path = ""
-export(float) var speed = 0.05
 var dialog
 
 var index = 0
 var finished = false
 var is_typing
 
+onready var voicebox: ACVoiceBox = $ACVoicebox
+
 func _ready():
-	$Timer.wait_time = speed
+	voicebox.connect("characters_sounded", self, "_on_voicebox_characters_sounded")
+	voicebox.connect("finished_phrase", self, "_on_voicebox_finished_phrase")
 	dialog = get_dialog()
 	assert(dialog, "Dialog not found")
-	next_phase()
+	clear()
 	
 func _process(_delta):
 	$Indicator.visible = finished
@@ -20,8 +22,12 @@ func _process(_delta):
 		if finished:
 			next_phase()
 		else:
-			$Phrase/Text.visible_characters = len($Phrase/Text.text)
-			# Voice speak stop
+			voicebox.stop()
+	
+func clear():
+	$Phrase/Name.bbcode_text = ""
+	$Phrase/Text.bbcode_text = ""
+	$Phrase/Text.visible_characters = 0
 	
 func next_phase() -> void:
 	if index >= len(dialog):
@@ -29,21 +35,13 @@ func next_phase() -> void:
 		return
 		
 	finished = false
+	
 	$Phrase/Name.bbcode_text = dialog[index]["Name"]
 	$Phrase/Text.bbcode_text = dialog[index]["Text"]
+	voicebox.base_pitch = dialog[index]["Pitch"]
 	
 	$Phrase/Text.visible_characters = 0
-	
-	# Voice speak start with text
-	
-	while $Phrase/Text.visible_characters < len($Phrase/Text.text):
-		$Phrase/Text.visible_characters += 1
-		$Timer.start()
-		yield($Timer, "timeout")
-		
-	finished = true
-	index += 1
-	return
+	voicebox.play_string($Phrase/Text.text)
 	
 func get_dialog() -> Array:
 	var f = File.new()
@@ -57,3 +55,11 @@ func get_dialog() -> Array:
 		return output
 	else:
 		return []
+
+func _on_voicebox_characters_sounded(characters: String):
+	$Phrase/Text.visible_characters += 1
+
+func _on_voicebox_finished_phrase():
+	$Phrase/Text.visible_characters = len($Phrase/Text.text)
+	finished = true
+	index += 1
