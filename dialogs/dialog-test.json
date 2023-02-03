@@ -25,6 +25,20 @@
     "NameColor": "#e2b3d5",
     "Pitch": 1.4,
     "Emotion": "cry",
-    "Text": "Are you ready?"
+    "Text": "Hey! Yo talking [shake rate=5 level=10][color=#e2b3d5]nonsense!![/color][/shake]"
+  },
+  {
+    "Name": "Miss Kelly",
+    "NameColor": "#e2b3d5",
+    "Pitch": 1.4,
+    "Emotion": "surprised",
+    "Text": "[center]Yo talking [shake rate=5 level=10][color=#e2b3d5]nonsense!![/color][/shake][/center]"
+  },
+  {
+    "Name": "Miss Kelly",
+    "NameColor": "#e2b3d5",
+    "Pitch": 1.4,
+    "Emotion": "surprised",
+    "Text": "[center]Yo talking [shake rate=5 level=10][color=#e2b3d5]nonsense!![/color][/shake][/center]"
   }
 ]

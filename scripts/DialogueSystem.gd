@@ -1,6 +1,9 @@
 extends Control
 
+signal finished
+
 export var dialog_path = ""
+export var faces_root = "sprites/faces/"
 var dialog
 
 var index = 0
@@ -28,17 +31,31 @@ func clear():
 	$Phrase/Name.bbcode_text = ""
 	$Phrase/Text.bbcode_text = ""
 	$Phrase/Text.visible_characters = 0
+	$Background/Portrait.texture = null
+	
 	
 func next_phase() -> void:
 	if index >= len(dialog):
-		queue_free()
+		clear()
+		emit_signal("finished")
+		# queue_free()
 		return
 		
 	finished = false
+	var phrase = dialog[index]
 	
-	$Phrase/Name.bbcode_text = dialog[index]["Name"]
-	$Phrase/Text.bbcode_text = dialog[index]["Text"]
-	voicebox.base_pitch = dialog[index]["Pitch"]
+	$Phrase/Name.bbcode_text = "[color=%s][b] %s [/b][/color]" % [phrase["NameColor"], phrase["Name"]]
+	$Phrase/Text.bbcode_text = phrase["Text"]
+	voicebox.base_pitch = phrase["Pitch"]
+
+	var file_name = phrase["Name"].replace(" ","_") + "/" + phrase["Emotion"] + ".png"
+	var file_path = faces_root + file_name
+	
+	var f = File.new()
+	if f.file_exists(file_path):
+		$Background/Portrait.texture = load(file_path)
+	else:
+		$Background/Portrait.texture = null
 	
 	$Phrase/Text.visible_characters = 0
 	voicebox.play_string($Phrase/Text.text)
@@ -57,7 +74,9 @@ func get_dialog() -> Array:
 		return []
 
 func _on_voicebox_characters_sounded(characters: String):
-	$Phrase/Text.visible_characters += 1
+	var count = len(characters)
+	print(count)
+	$Phrase/Text.visible_characters += count
 
 func _on_voicebox_finished_phrase():
 	$Phrase/Text.visible_characters = len($Phrase/Text.text)
