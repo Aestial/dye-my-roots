@@ -13,12 +13,12 @@ position = Vector2( -94, -3 )
 scale = Vector2( 4, 4 )
 
 [node name="Chair" type="Sprite" parent="."]
-position = Vector2( 125, -152 )
+position = Vector2( 58, -137 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 3 )
 
 [node name="Dye" parent="." instance=ExtResource( 2 )]
-position = Vector2( 128, -212 )
+position = Vector2( 61, -197 )
 scale = Vector2( 4, 4 )
 wait_time = 20
 
