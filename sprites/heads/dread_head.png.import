@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/64-white_circle.png-2789823a6bb390bcf4366160226429f2.stex"
+path="res://.import/dread_head.png-e93a4d8bf7d68888ed5611daa221a66d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/64-white_circle.png"
-dest_files=[ "res://.import/64-white_circle.png-2789823a6bb390bcf4366160226429f2.stex" ]
+source_file="res://sprites/heads/dread_head.png"
+dest_files=[ "res://.import/dread_head.png-e93a4d8bf7d68888ed5611daa221a66d.stex" ]
 
 [params]
 

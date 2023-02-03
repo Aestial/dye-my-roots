@@ -1,18 +1,13 @@
 extends Node
 
-var good = "[center]Good enough![/center]"
-var nonsense = "[center]Yo' talking [color=#e2b3d5]nonsense!![/color][/center]"
-
-var started = false
-
-# Called when the node enters the scene tree for the first time.
-func _ready():	
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if (!Input.is_action_just_pressed("ui_up") or started):
-		return
-	started = true
-	$DialogueSystem.next_phase()
+func _ready():
+	$Dye.reset()
 	
+func _on_Player_submit(color):
+	print(color)
+	$Dye.submit(color)
+
+func _on_Dye_dyed(distance):
+	var dollars = 1.0/(distance/2) * 1.50
+	print("Dollars earned: %s" %dollars)
+	$Dye.reset()

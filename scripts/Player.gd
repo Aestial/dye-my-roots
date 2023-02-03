@@ -1,23 +1,29 @@
 extends Node2D
 
+signal submit(color)
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	reset()
+	
+func reset():
+	$LineEdit.clear()
+	$Preview.self_modulate = Color.whitesmoke
 
 func preview(color):
 	$Preview.self_modulate = color
 
 func submit(color):
-	# current_dye.submit(color)
-	pass
+	emit_signal("submit", color)
+	reset()
 
 func _on_LineEdit_text_changed(new_text):
 	var color = Color(new_text)
-	assert(color, "Invalid color code")
-	preview(color)
+	if color:
+		preview(color)
 
 func _on_LineEdit_text_entered(new_text):
 	var color = Color(new_text)
-	preview(color)
-	submit(color)
+	if color:
+		submit(color)
+	else:
+		print("Enter a valid color!")

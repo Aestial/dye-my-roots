@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/Game.gd" type="Script" id=1]
+[ext_resource path="res://components/Dye.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/scenery/chair_mirror.png" type="Texture" id=3]
+[ext_resource path="res://components/Player.tscn" type="PackedScene" id=4]
+
+[node name="OneDyeMechanic" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( -94, -3 )
+scale = Vector2( 4, 4 )
+
+[node name="Chair" type="Sprite" parent="."]
+position = Vector2( 125, -152 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+
+[node name="Dye" parent="." instance=ExtResource( 2 )]
+position = Vector2( 128, -212 )
+scale = Vector2( 4, 4 )
+wait_time = 20
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2( 0, -200 )
+scale = Vector2( 4, 4 )

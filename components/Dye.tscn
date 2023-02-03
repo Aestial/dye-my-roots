@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/Dye.gd" type="Script" id=1]
+[ext_resource path="res://sprites/heads/curly_head.png" type="Texture" id=2]
+[ext_resource path="res://sprites/heads/straight_head.png" type="Texture" id=3]
+[ext_resource path="res://sprites/heads/dread_head.png" type="Texture" id=4]
+[ext_resource path="res://sprites/basics/white-circle-black-outline-4.png" type="Texture" id=5]
+[ext_resource path="res://sprites/basics/cloud-32.png" type="Texture" id=6]
+[ext_resource path="res://sprites/basics/white-circle-black-outline-8.png" type="Texture" id=7]
+[ext_resource path="res://themes/progress_bar_theme.tres" type="Theme" id=8]
+
+[node name="Dye" type="Sprite"]
+position = Vector2( 1, -13 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+curly = ExtResource( 2 )
+dread = ExtResource( 4 )
+straight = ExtResource( 3 )
+
+[node name="Bubble0" type="Sprite" parent="."]
+position = Vector2( 15, -16 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 7 )
+
+[node name="Bubble1" type="Sprite" parent="."]
+position = Vector2( 10, -12 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 5 )
+
+[node name="Cloud" type="Sprite" parent="."]
+position = Vector2( 30, -34 )
+texture = ExtResource( 6 )
+
+[node name="Target" type="Sprite" parent="Cloud"]
+position = Vector2( 3.55556, 2.66667 )
+scale = Vector2( 0.840741, 0.945833 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = -18.0
+margin_top = -28.0
+margin_right = 10.0
+margin_bottom = -20.0
+theme = ExtResource( 8 )
+value = 50.0
+percent_visible = false

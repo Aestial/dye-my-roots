@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chair_mirror.png-099622de3278e68269932cf9ae11df5b.stex"
+path="res://.import/white-circle-black-outline-8.png-00cd1366c5961326e9dbdbaf2f199dae.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/chair_mirror.png"
-dest_files=[ "res://.import/chair_mirror.png-099622de3278e68269932cf9ae11df5b.stex" ]
+source_file="res://sprites/basics/white-circle-black-outline-8.png"
+dest_files=[ "res://.import/white-circle-black-outline-8.png-00cd1366c5961326e9dbdbaf2f199dae.stex" ]
 
 [params]
 
