@@ -2,7 +2,7 @@ extends Node
 
 class_name Miss_Kelly_Declaration
 
-const data = {
+const portraits = {
 	"cry": "res://sprites/faces/Miss_Kelly/cry.png",
 	"neutral": "res://sprites/faces/Miss_Kelly/neutral.png",
 	"smile": "res://sprites/faces/Miss_Kelly/smile.png",

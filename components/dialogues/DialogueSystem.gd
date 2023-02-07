@@ -2,13 +2,12 @@ extends Control
 
 signal on_ended
 
-export var dialog_path = ""
-export var faces_root = "res://sprites/faces/"
-var dialog
+export var declaration = "/root/MissKellyDeclaration"
 
+var dialog
+var ended = false
 var index = 0
 var finished = false
-var ended = false
 var is_typing
 
 onready var voicebox: ACVoiceBox = $ACVoicebox
@@ -49,28 +48,21 @@ func next_phase() -> void:
 		
 	finished = false
 	var phrase = dialog[index]
-	
-	$Phrase/Name.bbcode_text = "[color=%s][b] %s [/b][/color]" % [phrase["NameColor"], phrase["Name"]]
+	var name_bbcode = "[color=%s][b] %s [/b][/color]" % [phrase["NameColor"], phrase["Name"]]
+	$Phrase/Name.bbcode_text = name_bbcode
 	$Phrase/Text.bbcode_text = phrase["Text"]
 	voicebox.base_pitch = phrase["Pitch"]
 
 	# Call PortraitTexture function with character and emotion as parameters
-	$Background/PortraitTexture.set_character_emotion(faces_root, phrase["Name"], phrase["Emotion"])
+	$Background/PortraitTexture.set_emotion(declaration, phrase["Emotion"])
 	
 	$Phrase/Text.visible_characters = 0
 	voicebox.play_string($Phrase/Text.text)
-
 	
 func get_dialog() -> Array:
-	var f = File.new()
-	assert(f.file_exists(dialog_path), "File path does not exist")
-	
-	f.open(dialog_path, File.READ)
-	var json = f.get_as_text()
-	var output = parse_json(json)
-	
-	if typeof(output) == TYPE_ARRAY:
-		return output
+	var array = get_node(declaration).dialogues
+	if typeof(array) == TYPE_ARRAY:
+		return array
 	else:
 		return []
 
