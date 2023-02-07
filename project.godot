@@ -26,8 +26,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Dye my Roots"
-config/description="Help Miss Kelly"
+config/name="Dye my Roots HEX"
+config/description="Help Ms Kelly to fade non-dyed hair roots."
 run/main_scene="res://components/ui/Landing.tscn"
 config/icon="res://icon.png"
 
