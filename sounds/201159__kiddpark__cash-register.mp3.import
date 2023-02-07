@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/201159__kiddpark__cash-register.mp3-699304e33a76ed443e55ea6b71c2981d.mp3str"
+
+[deps]
+
+source_file="res://sounds/201159__kiddpark__cash-register.mp3"
+dest_files=[ "res://.import/201159__kiddpark__cash-register.mp3-699304e33a76ed443e55ea6b71c2981d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -13,16 +13,27 @@ _global_script_classes=[ {
 "class": "ACVoiceBox",
 "language": "GDScript",
 "path": "res://addons/ACVoicebox/ACVoicebox.gd"
+}, {
+"base": "Node",
+"class": "Miss_Kelly_Declaration",
+"language": "GDScript",
+"path": "res://sprites/faces/Miss_Kelly/Miss_Kelly_Declaration.gd"
 } ]
 _global_script_class_icons={
-"ACVoiceBox": ""
+"ACVoiceBox": "",
+"Miss_Kelly_Declaration": ""
 }
 
 [application]
 
 config/name="Dye my Roots"
-run/main_scene="res://Landing.tscn"
+config/description="Help Miss Kelly"
+run/main_scene="res://components/ui/Landing.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+MissKellyDeclaration="*res://sprites/faces/Miss_Kelly/Miss_Kelly_Declaration.gd"
 
 [editor_plugins]
 

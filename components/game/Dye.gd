@@ -1,27 +1,27 @@
 extends Sprite
 
-signal dyed(distance)
+signal completed(likeness)
 
-export var wait_time = 5 
+export var wait_time = 25
 export(Color) var roots_color = Color.whitesmoke
 export(Texture) var curly
 export(Texture) var dread
 export(Texture) var straight
 
-var is_editable
 var target
 var target_html
 var timer = Timer.new()
+var max_distance
 var max_value
 
 func _ready():
+	max_distance = color_distance_rgb(Color.white, Color.black)
 	max_value = $ProgressBar.max_value
 	timer.connect("timeout", self, "on_timeout")
 	timer.wait_time = wait_time
 	timer.one_shot = true
 	add_child(timer)
-	# Update when instantiated
-	is_editable = true
+	visible = false
 	
 func _process(_delta):
 	update_clock(wait_time - timer.time_left)
@@ -32,23 +32,26 @@ func reset():
 	set_hair_color()
 	update_clock(0)
 	timer.start()
+	visible = true
+	$Result.visible = false
 		
 func submit(color):
 	self_modulate = color
-	# print("Guess: %s" % color.to_html(false))
 	var distance = color_distance_rgb(target, color)
-	print("Color distance: %s" % distance)
-	emit_signal("dyed", distance)
+	var likeness = stepify(clamp(range_lerp(distance, 0, 1, 100, 0), 0, 100), 0.1)
+	print("Color likeness: %s" % likeness)
+	$Result.visible = true
+	$Result.bbcode_text = "%s%%" % likeness
+	emit_signal("completed", likeness)
 	
 func set_hair_color():
-	var r = rand_range(0.2, 0.8)
-	var g = rand_range(0.2, 0.8)
-	var b = rand_range(0.2, 0.8)
+	var r = rand_range(0.21, 0.92)
+	var g = rand_range(0.21, 0.92)
+	var b = rand_range(0.21, 0.92)
 	target = Color(r, g, b)
 	target_html = target.to_html(false)
 	self_modulate = roots_color
 	$Cloud/Target.self_modulate = target
-	# print("Current color: %s" % target_html)
 	
 func set_hair_style():
 	var style
@@ -73,4 +76,4 @@ func color_distance_rgb(color_a, color_b):
 	return sqrt(r*r + g*g + b*b)
 
 func on_timeout():
-	reset()
+	emit_signal("completed", -1.0)
